@@ -1,11 +1,21 @@
 
 def _is_prime(number):
-    pass
+    if number<2:                        #numbers equal to 1 and below are not prime numbers
+        return False
+    if number%2==0 and number>2:        #all even numbers except 2 are not prime numbers
+        return False
+    for i in range (3,number,2):        #checks if number is divisible by any number between 3 and number. 2 steps to skip even numbers. This can be improved with int(n**0.5) + 1 which I have not figured out yet. 
+            if number%i == 0:
+                return False
+    return True                         #loop ends here if above conditions not met. We have a PRIME number!
 
 
 def list_of_prime_numbers(max_number):
-    pass
-
+    numberList=[]                       #creates an empty list 'numberList'
+    for i in range(max_number+1):       #Stop is max_number +1 to ensure given number is also tested.
+        if _is_prime(i)==True:          #calls _is_prime(number) function
+            numberList.append(i)        #appends prime numbers to 'numberList'
+    return numberList                   #returns final numberList
 # =================== #
 # ====== Tests ====== #
 # =================== #
